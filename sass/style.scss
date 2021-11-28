@@ -1,0 +1,716 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    border: none; outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar{
+        width: 1rem; 
+    }
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: #e67e22; 
+    }
+}
+section{
+    padding: 2rem 9%;
+}
+
+$carrot-color: #e67e22;
+$black: #130f40;
+$white: #fff;
+$light-color: #666;
+$light-bg: #eee;
+$border: .2rem solid $black;
+$box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+
+// Utility Classes
+.btn{
+    border-radius: 5rem;
+    cursor: pointer;
+    border-top-left-radius: 0;
+    border: $border;
+    background: transparent;
+    padding: .8rem 2.8rem;
+    font-size: 1.7rem;
+    z-index: 0;
+    color: $black;
+    position: relative;
+    overflow: hidden;
+}
+.headings{
+    text-align: center;
+    font-size: 4.5rem;
+    color: $black;
+    margin-bottom: 2rem;
+}
+.headings span{
+    color: $carrot-color;
+}
+
+@mixin white-btn {
+    color: $white;
+    border-color: $white;
+    margin-left: 1rem;
+
+    &::before{
+        position: absolute;
+        content: '';
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        background: $white;
+        z-index: -1;
+        transition: all .2s linear;
+        clip-path: circle(0% at 0% 5%);
+        border-radius: 5rem;
+        border-top-left-radius: 0;
+    }
+    &:hover::before{
+        clip-path: circle(100%);
+    }
+    &:hover{
+        color: $black;
+        z-index: 1;
+    }
+}
+@mixin black-btn {
+    font-size: 1.3rem;
+    color: $black;
+    border-color: $black;
+
+    &::before{
+        position: absolute;
+        content: '';
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        background: $black;
+        z-index: -1;
+        transition: all .2s linear;
+        clip-path: circle(0% at 0% 5%);
+        border-radius: 5rem;
+        border-top-left-radius: 0;
+    }
+    &:hover::before{
+        clip-path: circle(100%);
+    }
+    &:hover{
+        color: $white;
+        z-index: 1;
+    }
+}
+
+
+// Header Section CSS
+header.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: $white;
+    padding: 2rem 9%;
+    box-shadow: $box-shadow;
+    z-index: 1000;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+    .items{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i{
+            margin-right: 1.5rem;
+            font-size: 2rem;
+            color: $black;
+            cursor: pointer;
+        }
+    }
+
+    .menu-bar i{
+        display: none;
+    }
+
+    .logo{
+        font-size: 2.5rem;
+        color: $black;
+        font-weight: bolder;
+
+        i{
+            margin-right: .5rem;
+            color: $carrot-color;
+        }
+    }
+
+    nav.navbar{
+        font-size: 1.5rem;
+
+        a{
+            color: $light-color;
+            margin-right: 1rem;
+
+            &:hover{
+                color: $carrot-color;
+            }
+        }
+    }
+
+}
+
+.head.active{
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+
+// Home Section CSS
+section.home{
+    background: url(../image/home_bg_img.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 108vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .wave-img img{
+        position: absolute;
+        width: 100%;
+        bottom: -9px;
+        left: 0;
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .content{
+        font-size: 5rem;
+        width: 47%;
+        line-height: 1.4;
+        margin-bottom: 3rem;
+        color: $white;
+
+        span{
+            color: $carrot-color
+        }
+
+        .btn{
+            @include white-btn();
+        }
+    }
+}
+
+
+// About Section CSS
+section.about{
+    margin-top: 1rem;
+
+    .about-container{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    .about_img{
+        flex: 1 1 42rem;
+
+        img{
+            width: 100%;
+        }
+    }
+    .about_text{
+        flex: 1 1 42rem;
+
+        h1{
+            font-size: 4.5rem;
+            width: 84%;
+            font-weight: 500;
+            line-height: 1.3;
+            color: $black;
+
+            span{
+                color: $carrot-color;
+            }
+        }
+
+        p{
+            font-size: 1.3rem;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+            color: $light-color;
+        }
+        
+        button.btn{
+            @include black-btn();
+        }
+    }
+}
+
+// Shop Section CSS
+div.shop{
+    margin-top: 4rem;
+
+    .shop-wrapper-dog{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+
+        .shop_img{
+            flex: 1 1 42rem;
+
+            img{
+                width: 95%;
+            }
+        }
+        .shop_text{
+            flex: 1 1 42rem;
+            text-align: center;
+
+            h2{
+                font-size: 4rem;
+                color: $black;
+                margin-bottom: 1.3rem;
+
+                span{
+                    color: $carrot-color;
+                }
+            }
+            p{
+                font-size: 1.3rem;
+                width: 94%;
+                color: $light-color;
+                line-height: 1.7;
+            }
+            span.price{
+                font-size: 4rem;
+                display: block;
+                margin: 1.5rem 0;
+                color: $black;
+            }
+            img{
+                display: block;
+                margin: auto;
+                width: 30%;
+                cursor: pointer;
+
+                &:hover{
+                    transform: rotate(10deg);
+                }
+            }
+        }
+    }
+
+    .shop-wrapper-cat{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        gap: 1.5rem;
+
+        .shop_text_cat{
+            flex: 1 1 42rem;
+            text-align: center;
+
+            h2{
+                font-size: 4rem;
+                color: $black;
+                margin-bottom: 1.3rem;
+
+                span{
+                    color: $carrot-color;
+                }
+            }
+            p{
+                font-size: 1.3rem;
+                width: 94%;
+                color: $light-color;
+                line-height: 1.7;
+            }
+            span.price{
+                font-size: 4rem;
+                display: block;
+                margin: 1.5rem 0;
+                color: $black;
+            }
+            img{
+                display: block;
+                margin: auto;
+                width: 30%;
+                cursor: pointer;
+
+                &:hover{
+                    transform: rotate(10deg);
+                }
+            }
+        }
+        .shop_img_cat{
+            flex: 1 1 42rem;
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Product Section CSS
+section.products{
+    .product-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+
+        .product{
+            position: relative;
+            cursor: pointer;
+
+            &:hover .threesome{ 
+                transform: scale(1);
+            }
+            &:hover img{
+                transform: scale(1.03);
+            }
+            .threesome{
+                position: absolute;
+                content: '';
+                right: 22px;
+                top: 4%;
+                transform-origin: right;
+                transform: scale(0);
+
+                span{
+                    margin-top: 1.2rem;
+                    height: 4rem;
+                    width: 4rem;
+                    border-radius: 50%;
+                    background: #fff;
+                    cursor: pointer;
+
+                    &:hover{
+                        background: $carrot-color;
+                    }
+                    &:hover i{
+                        color: #fff;
+                    }
+                    &:nth-child(1){
+                        margin-top: .2rem;
+                    }
+                    i{
+                        font-size: 2rem;
+                        color: $black;
+                        margin-top: 1.1rem;
+                    }
+                }
+            }
+            img{
+                width: 97%;
+            }
+            h4{
+                text-align: center;
+                font-size: 2rem;
+                color: $black;
+                margin: 1rem 0;
+            }
+            span{
+                text-align: center;
+                display: block;
+                font-size: 1.6rem;
+                color: $carrot-color;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+// Services Section CSS
+section.service{
+    .service-container{
+        margin-top: 3rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+
+        .box{
+            text-align: center;
+            background: $light-bg;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%;
+            cursor: pointer;
+
+            &:nth-child(even){
+                border-radius: 79% 21% 81% 19% / 58% 93% 7% 42%;
+            }
+
+            &:hover{
+                border-radius: .5rem;
+            }
+
+            span{
+                height: 5rem;
+                width: 5rem;
+                border-radius: 50%;
+                background: $carrot-color;
+                display: block;
+                margin: auto;
+
+                i{
+                    font-size: 2.5rem;
+                    color: $white;
+                    line-height: 1.8;
+                }
+            }
+
+            h4{
+                margin: 1rem 0;
+                font-size: 2rem;
+                color: $black;
+            }
+            button.btn{
+                font-size: 1.2rem;
+                margin-top: .5rem;
+                @include black-btn();
+            }
+        }
+
+    }
+}
+
+// Plan Section CSS
+section.plan{
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+
+        .card{
+            position: relative;
+            background: $light-bg;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+            padding: 2rem;
+
+            span{
+                margin: 1rem 0;
+                text-align: center;
+                display: block;
+                font-size: 1.5rem;
+                color: $carrot-color;
+            }
+            h3{
+                text-align: center;
+                color: $black;
+                font-size: 3rem;
+            }
+            i{
+                color: $carrot-color;
+                font-size: 4rem;
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+            .flex{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 .5rem;
+
+                p{
+                    font-size: 1.3rem;
+                    color: $black;
+                }
+                i{
+                    font-size: 1.3rem
+                }
+            }
+            .credit{
+                p{
+                    font-size: 5rem;
+                    color: $black;
+                    font-weight: 700;
+                    padding-left: .5rem;
+                    margin-right: 1.5rem 0;
+                    margin: 2rem 0;
+
+
+                    span{
+                        display: inline-block;
+                        color: $black;
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+        }
+        .btn{
+            margin-left: 16rem;
+            width: 50%;
+            height: 4rem;
+            display: block;
+            font-size: 1.5rem;
+            padding: 1.1rem 1rem;
+            cursor: pointer;
+            @include black-btn();
+        }
+    }
+}
+
+// Contact Section CSS
+div.contact{
+    margin-top: 3rem;
+
+    .contact-wrapper{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .contact_image{
+            flex: 1 1 42rem;
+
+            img{
+                width: 100%;
+            }
+        }
+        .contact_text{
+            flex: 1 1 42rem;
+
+            h1{
+                font-size: 4rem;
+                color: $black;
+            }
+            .same{
+                border-bottom: .2rem solid $black;
+                width: 80%;
+                margin: 1rem 0;
+
+                input{
+                    width: 80%;
+                    padding: 1rem 0;
+                }
+            }
+            textarea{
+                width: 80%;
+                padding: 1rem 0;
+                resize: none;
+            }
+            .btn{
+                margin-top: 1rem;
+                width: 81%;
+                padding: 1rem 2.8rem;
+                @include black-btn();
+            }
+        }
+    }
+}
+
+// Footer Section CSS
+section.footer{
+    background: url(../image/footer_background.jpg) no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    margin-top: 1rem;
+
+    .wave{
+        img{
+            background-size: cover;
+            margin-left: -47rem;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            margin-top: -2rem;
+        }
+    }
+    .links{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: -3rem;
+        gap: 1.5rem;
+
+        .btn{
+            @include white-btn();
+            font-size: 1.4rem;
+        }
+    }
+    .created{
+        margin: 2.5rem 0;
+        font-size: 2rem;
+        text-align: center;
+        color: $white;
+
+        span{
+            color: $carrot-color;
+        }
+    }
+}
+
+
+@media (max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+    .head{
+        padding: 2rem;
+    }
+}
+
+@media(max-width: 768px){
+    header.head .menu-bar i{
+        display: inline-block;
+    }
+    .head{
+        padding: 2rem;
+    }
+    nav.navbar{
+        position: absolute;
+        top: 99%; left: 0; right: 0;
+        background: $white;
+        padding: 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    nav.navbar.poly{
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .fa-times{
+        transform: rotate(180deg);
+    }
+    nav.navbar a{
+        display: block;
+        margin-top: 1rem;
+        padding-left: 5rem;
+    }
+}
+
+@media(max-width: 450px){
+    html{
+        font-size: 50%;
+    }
+    section.home .content h3{
+        font-size: 4rem;
+    }
+    section.plan .card{
+        margin-top: 2rem;
+    }
+    div.contact .contact_text{
+        text-align: center;
+    }
+    div.contact .contact-wrapper .contact_text .same{
+        margin: 1rem 4rem;
+    }
+    div.contact .contact-wrapper .contact_text textarea{
+        padding-left: 3rem;
+    }
+}
